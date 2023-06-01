@@ -1,0 +1,375 @@
+   /*모바일first로 작성 후 미디어쿼리에서 확장하는 방식*/
+   :root{
+    --apple_black: rgb(29, 29, 31);
+    --apple_white: #ddd;
+    --apple_white_up: #e7e7e7;
+    --apple_grey: #888;
+    --apple_grey_up: #9c9c9c;
+    --apple_lightgrey: #b9b9b9;
+    --yellow: #e9dd2b;
+    --black: #000;
+    --white: #fff;
+  }
+  html{
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+  }
+  body{
+    overflow-x: hidden;
+    color: var(--apple_black);
+    letter-spacing: -0.05em;
+    background: #151515;
+  }
+  p{
+    line-height: 1.6;
+  }
+  a{
+    color: var(--apple_black);
+    text-decoration: none;
+  }
+  
+  body.before-load {
+    overflow: hidden;
+  }
+  .container {
+    /*iPone 가로 스크롤 방지*/
+    overflow-x: hidden;
+  }
+  .global-nav{
+    position: absolute; /*헤더 공간 차지하지 않도록(스크롤 처리 시)*/
+    top: 3px;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 38px; /*44*/
+    padding: 0 1rem;
+  }
+
+  .global-nav a{
+    color: #c3c3c3;
+    font-size: 0.7rem;
+  }
+
+  .local-nav{
+    position: absolute;
+    top: 45px;
+    left: 0;
+    z-index: 11;
+    width: 100%;
+    height: 52px;
+    padding: 0 1rem;
+    border-bottom: 1px solid #dddddd66;
+  }
+  .local-nav-sticky .local-nav {
+    position: fixed;
+    top: 0;
+    background: rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: saturate(180%) blur(15px); /*ios 버전*/
+    backdrop-filter: saturate(180%) blur(15px); /*뿌옇게 처리*/
+  }
+  .global-nav-links,
+  .local-nav-links{
+    display: flex;
+    align-items: center;
+    max-width: 1000px; /*화면 줄였을때 간격 자연스럽게 줄어듬*/
+    height: 100%;
+    margin: 0 auto;
+  }
+  .global-nav-links{
+    justify-content: space-between;
+  }
+  .local-nav-links .product-name{
+    margin-right: auto;
+    font-size: 1.5rem; /*1.4*/
+    font-weight: 700; /*900*/
+    color: var(--apple_white);
+  }
+  
+  .local-nav-links a{
+    font-size: 0.8rem;
+    color: var(--apple_white);
+    font-weight: 500;
+  }
+  .local-nav-links a:not(.product-name){
+    margin-left: 2em;
+  }
+  .scroll-section{
+    position: relative;
+    padding-top: 50vh;
+  }
+  /*추가(밑의 두 세션)*/
+  #scroll-section-0 h1{
+    position: relative;
+    top: -10vh; /*창 높이의 10%만큼*/
+    z-index: 5;
+    font-size: 4rem; /*14px(html지정)*4*/
+    text-align: center;
+    /*추가*/
+    color: var(--yellow);
+  }
+  .main-message{ /*줄수 상관없이 세로방향 중앙정렬*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 35vh; /*높이의 35%에 위치!!*/
+    margin: 5px 0;
+    height: 3em; /*이 div의 폰트 사이즈 기준, em을 쓰는 이유:이 글자 크기의 3배이기 때문에 파악 쉬움*/
+    font-size: 2.5rem;
+    opacity: 0;
+    /*추가*/
+    color: var(--white);
+  }
+  .main-message p{
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.2;
+    text-shadow: 3px 4px 4px rgb(45, 45, 45);
+  }
+  .main-message small{
+    display: block; /*다음 글자가 다음단락으로 넘어감*/
+    margin-bottom: 0.5em;
+    font-size: 2.3rem; /*1.2*/
+    text-shadow: 3px 3px 3px rgb(37, 37, 37); /*그림자변경*/
+  }
+  #scroll-section-2 .main-message{
+    font-size: 3.5rem;
+  }
+  .description{
+    /*
+    font-size: 1.2rem;
+    */
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;/*메뉴명과 좌우패딩 맞춤*/
+    font-size: 1.5rem;
+    color: var(--apple_grey_up);
+    font-weight: 500; /*400*/
+  }
+  .description strong{
+    /*margin-right: 0.2em; /*위와 마찬가지로 이 글자 크기의 0.2배 정도 여백을 하고 싶어서(계산 쉬움)*/
+    font-size: 3rem;
+    color: var(--apple_white_up);
+  }
+  /*추가*/
+  .description img{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .description span{
+    color: var(--apple_white_up);
+  }
+  .blank{ /*빈줄 삽입*/
+    font-size: 3rem;
+  }
+  .description a{
+    color: var(--yellow);
+  }
+  .sticky-elem.desc-message {
+    width: 36%;
+    font-weight: 700;
+    opacity: 0;
+    color: var(--white);
+    font-size: 1.05rem;
+  }
+  .pin{
+    width: 1px;
+    height: 100px;
+    background-color: var(--white);
+  }
+  #scroll-section-2 .b{
+    top: 15%;
+    left: 45%;
+  }
+  .c .pin{
+    background-color: var(--black);
+  }
+  #scroll-section-2 .c{
+    top: 55%;
+    left: 51%;
+    color: var(--black);
+  }
+  .mid-message{
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    font-size: 2rem;
+    color: var(--apple_grey);
+  }
+  .mid-message strong{
+    color: var(--apple_white);
+  }
+  .canvas-caption{
+    max-width: 1000px;
+    margin: -22rem auto 0; /*모바일용 문단 높이*/
+    padding: 0 1rem;
+    font-size: 1.5rem; /*1.2*/
+    color: var(--apple_lightgrey);
+    /*추가*/
+    font-weight: 500;
+    text-align: center;
+    line-height: 4rem;
+  }
+  /*추가*/
+  .canvas-caption span{
+    color: var(--white);
+  }
+  .canvas-caption a{
+    color: var(--yellow);
+  }
+  .normal-content .need1{ /*스크롤바 버그 관련*/
+    display: none;
+  }
+  .normal-content .need2{ /*스크롤바 버그 관련*/
+    display: none;
+  }
+  /*
+  .footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 7rem;
+    background-color: var(--yellow);
+    color: var(--white);
+  }
+  */
+  .sticky-elem{
+    display: none;
+    position: fixed;
+    left: 0;
+    width: 100%;
+  }
+  #show-scene-0 #scroll-section-0 .sticky-elem, /*자바스크립트에 body id을 추가하여 해당하는 것만 보이도록*/
+  #show-scene-1 #scroll-section-1 .sticky-elem,
+  #show-scene-2 #scroll-section-2 .sticky-elem,
+  #show-scene-3 #scroll-section-3 .sticky-elem{ 
+    display: block;
+    will-change: transform, opacity; /*메모리 사용량 증가(퍼포먼스 향상 효과)*/
+  }
+  .scroll-effect-end .sticky-elem {
+    display: none !important;
+  }
+  .sticky-elem-canvas{
+    top: 0;
+    height: 100%;
+  }
+  .sticky-elem-canvas canvas{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+  #scroll-section-3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .image-blend-canvas.sticky{
+    position: fixed;
+    top: 0;
+     z-index: 10;
+  }
+  .loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    background: var(--white);
+    opacity: 0;
+    transition: 0.5s;
+  }
+  .before-load .container { /*새로고침 버그 수정*/
+    display: none; 
+  }
+  .before-load .loading {
+    opacity: 1;
+  }
+  @keyframes loading-spin {
+    100% { transform: rotate(360deg); }
+  }
+  @keyframes loading-circle-ani {
+    0% { stroke-dashoffset: 157; }
+    75% { stroke-dashoffset: -147; }
+    100% { stroke-dashoffset: -157; }
+  }
+  .loading-circle {
+    width: 54px;
+    height: 54px;
+    animation: loading-spin 3s infinite;
+  }
+  .loading-circle circle {
+    stroke: var(--black);
+    stroke-width: 4;
+    /*getTotalLength()로 storke의 길이를 얻어올 수 있음*/
+    stroke-dasharray: 157;
+    stroke-dashoffset: 0;
+    fill: transparent;
+    animation: loading-circle-ani 1s infinite;
+  }
+  
+  .normal-content {
+    margin-bottom: 10rem;
+  }
+  #top{
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    cursor:pointer;
+    z-index: 10;
+    width: 4rem;
+    height: 4rem;
+  }
+  
+  @media (min-width: 1024px){
+    #scroll-section-0 h1{
+      font-size: 9vw; /*윈도우 창의 9% 정도(창에 따라 달라짐), 굷직한 문구는 창에 따라 크기가 달라지도록*/
+    }
+    .main-message{
+      font-size: 4vw;
+    }
+    .description{
+      padding: 0; /*메뉴명은 패딩 없음 width 1000px*/
+      font-size: 2rem;
+    }
+    .description strong{
+      font-size: 6rem;
+    }
+    #scroll-section-2 .main-message{
+      font-size: 6vw;
+    }
+    .main-message small{
+      font-size: 3.3vw; /*1.5vw*/
+    }
+    .sticky-elem.desc-message {
+      width: 22%;
+    }
+    #scroll-section-2 .b{
+      left: 60%;
+    }
+    .mid-message{
+      width: 1000px;
+      padding: 0;
+      font-size: 4vw; /*가변값*/
+    }
+    .canvas-caption{
+      margin-top: -2rem; /*-폰트사이즈4배*/
+        padding: 0;
+      /*font-size: 2rem; /*고정값*/
+      font-size: 3.5rem;
+      line-height: 8rem;
+    }
+    .normal-content .need1{
+      display: block;
+    }
+  }
+  @media (min-width: 1500px){
+    .normal-content .need1{
+      display: none;
+    }
+    .normal-content .need2{
+      display: block;
+    }
+  }
